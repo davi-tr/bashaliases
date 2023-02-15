@@ -5,13 +5,6 @@
 
 edI()
 {
-        touch makefile.sh && touch makefile.bat && printf "g++ -c *.cpp\ng++ *.o -o $1.exe \nrm *.o -f" >> makefile.sh
-}
+        touch makefile.sh && printf "#!/bin/bash\n\nrm *.o -f\nrm $1.exe -f\n\ng++ -c *.cpp\ng++ *.o -o $1.exe \n" >> makefile.sh
 
-windows()
-{
-        printf "g++ -c $1.cpp" >> makefile.bat
-        printf "\ng++ -c $2.cpp" >> makefile.bat
-        printf "\ng++ $1.o $2.o -o $3.exe" >> makefile.bat
-        printf "\nrm $1.o $2.o -f" >> makefile.bat
 }
